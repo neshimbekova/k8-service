@@ -1,0 +1,16 @@
+apiVersion: ver1
+kind: ReplicationController
+metadata:
+  name: nginx-svc
+spec:
+  replicas: 3
+  selector:
+    app: nginx-test
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx

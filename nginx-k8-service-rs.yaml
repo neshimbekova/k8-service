@@ -1,0 +1,26 @@
+apiVersion: ext/ver1
+kind: ReplicaSet
+metadata:
+  labels:
+    name: k8-service
+  name: k8-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: k8-service-pod
+  template:
+    metadata:
+      labels:
+        app: k8-service-pod
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources:
+          requests:
+            cpu: 100m
+        ports:
+        - containerPort: 81
+          name: nginx
+          protocol: TCP
